@@ -23,6 +23,6 @@ if ((request.getSession(false).getAttribute("User") == null)) {
 	<div style="text-align: right">
 		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
 	</div>
-
+	
 </body>
 </html>

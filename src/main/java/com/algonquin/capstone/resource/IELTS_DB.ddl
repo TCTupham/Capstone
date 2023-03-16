@@ -21,38 +21,10 @@ INSERT INTO `ielts_db`.`users`
 `PASSWORD`,
 `ROLE`)
 VALUES
-("Tu Pham",
-"pham0091@algonquinlive.com",
-"pham0091",
-"12345678",
-"Admin");
-
-INSERT INTO `ielts_db`.`users`
-(
-`FULLNAME`,
-`EMAIL`,
-`USERNAME`,
-`PASSWORD`,
-`ROLE`)
-VALUES
-("My Ha Cao",
-"cao00108@algonquinlive.com",
-"cao00108",
-"12345678",
-"Admin");
-
-INSERT INTO `ielts_db`.`users`
-(
-`FULLNAME`,
-`EMAIL`,
-`USERNAME`,
-`PASSWORD`,
-`ROLE`)
-VALUES
-("Hongcheng Bu",
-"bu000006@algonquinlive.com",
-"bu000006",
-"12345678",
+("Admin",
+"admin@algonquinlive.com",
+"admin",
+"admin",
 "Admin");
 
 
@@ -78,9 +50,21 @@ INSERT INTO `ielts_db`.`users`
 `PASSWORD`,
 `ROLE`)
 VALUES
-("User 2",
-"user2@algonquinlive.com",
-"user2",
+("User",
+"user@algonquinlive.com",
+"user",
 "12345678",
 "User");
 
+
+CREATE TABLE `ielts_db`.`questions` (
+  id CHAR(40) not null PRIMARY KEY,
+  question TEXT,
+  option1 TEXT,
+  option2 TEXT,
+  option3 TEXT,
+  option4 TEXT,
+  answer CHAR(2),
+  topic TEXT,
+  datecreated  Date
+);
