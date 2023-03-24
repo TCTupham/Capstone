@@ -13,6 +13,8 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 <%
 }
 %>
+<%@ page import="com.algonquin.capstone.beans.questions" %>
+<% questions question = (questions)request.getAttribute("thequestion"); %>
 <body>
 	<center>
 		<h2>Update Question</h2>
@@ -25,18 +27,20 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 	<div>
 	<h3> Update question: </h3>
 	<form action="<%=request.getContextPath()%>/UpdateQuestionServlet" method="post">
-	<label for="question">Topic: </label>
-	<input type="text" name="topic" id="topic" class="question" style="width: 600px;" value="<%=request.getAttribute("topic")%>" readOnly></input><br/> <br/>
+	<p>Topic: <%=question.getTopic()%>"</p>
+	<p>Date Created: <%=question.getDate()%>"</p>
+	<p>Level: <%=question.getLevel()%>"</p>
+	
 	<label for="question">Question: </label>
-	<input type="text" name="question" id="question" class="question" style="width: 600px;" value="<%=request.getAttribute("question")%>"></input> <br/> <br/>
+	<input type="text" name="question" id="question" class="question" style="width: 600px;" value="<%=question.getQuestion()%>"></input> <br/> <br/>
 	<label for="option1">Option 1:</label>
-	<input type="text" name="option1" id="option1" class="question" style="width: 300px;" value="<%=request.getAttribute("option1")%>"/><br/> <br/>
+	<input type="text" name="option1" id="option1" class="question" style="width: 300px;" value="<%=question.getOption1()%>"/><br/> <br/>
 	<label for="option2">Option 2:</label>
-	<input type="text" name="option2" id="option2" class="question" style="width: 300px;" value="<%=request.getAttribute("option2")%>"/><br/> <br/>
+	<input type="text" name="option2" id="option2" class="question" style="width: 300px;" value="<%=question.getOption2()%>"/><br/> <br/>
 	<label for="option3">Option 3:</label>
-	<input type="text" name="option3" id="option3" class="question" style="width: 300px;" value="<%=request.getAttribute("option3")%>"/><br/> <br/>
+	<input type="text" name="option3" id="option3" class="question" style="width: 300px;" value="<%=question.getOption3()%>"/><br/> <br/>
 	<label for="option4">Option 4:</label>
-	<input type="text" name="option4" id="option4" class="question" style="width: 300px;" value="<%=request.getAttribute("option4")%>"/><br/> <br/>
+	<input type="text" name="option4" id="option4" class="question" style="width: 300px;" value="<%=question.getOption4()%>"/><br/> <br/>
 	<label>New Answer:</label>
 	<select name="answer" id="answer" >
 		<option value="1">1</option>
@@ -45,10 +49,10 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 		<option value="4">4</option>
 	</select>
 	<br/> <br/>
-	<input type="hidden" name="id" id="id" class="question" value="<%=request.getAttribute("id")%>"/>
+	<input type="hidden" name="id" id="id" class="question" value="<%=question.getId()%>"/>
 	<input type="submit" value="Update"/>	
 	</form>
-	<a href="<%=request.getContextPath()%>/QuestionManageServlet"><button>Cancel</button></a>
+	<a href="<%=request.getContextPath()%>/QuestionList"><button>Cancel</button></a>
 	</div>
 </body>
 </html>

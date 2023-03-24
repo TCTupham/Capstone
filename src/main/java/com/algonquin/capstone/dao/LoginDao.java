@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import com.algonquin.capstone.beans.LoginBean;
 import com.algonquin.capstone.services.ApplicationService;
+import com.algonquin.capstone.servlets.DBConnection;
 import com.algonquin.capstone.utils.Constant;
 
 public class LoginDao implements ApplicationService {

@@ -25,6 +25,6 @@ public class DeleteQuestionServlet extends HttpServlet {
 		} else {
 			System.out.println("Delete Successful");
 		}
-		response.sendRedirect(request.getContextPath() + "/QuestionManageServlet");
+		response.sendRedirect(request.getContextPath() + "/QuestionList");
 	}
 }

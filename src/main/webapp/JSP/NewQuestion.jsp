@@ -42,12 +42,19 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 		<option value="3">3</option>
 		<option value="4">4</option>
 	</select>
+	<label>Level:</label>
+	<select name="level" id="level">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
 	<br/> <br/>
 	<label for="topic">Topic:</label>
 	<input type="text" name="topic" id="topic" class="question" style="width: 300px;"/>
 	<br/> <br/>
 	<input type="submit" value="Create"/>
 	</form>
+	<a href="<%=request.getContextPath()%>/QuestionList"><button>Cancel</button></a>
 	</div>
 </body>
 </html>

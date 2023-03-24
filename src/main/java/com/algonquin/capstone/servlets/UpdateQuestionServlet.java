@@ -24,14 +24,7 @@ public class UpdateQuestionServlet extends HttpServlet {
 		AdminDao dao = new AdminDao();
 		try {
 			questions thequestion = dao.getRow(id);
-			request.setAttribute("id",thequestion.getId());
-			request.setAttribute("question",thequestion.getQuestion());
-			request.setAttribute("option1",thequestion.getOption1());
-			request.setAttribute("option2",thequestion.getOption2());
-			request.setAttribute("option3",thequestion.getOption3());
-			request.setAttribute("option4",thequestion.getOption4());
-			request.setAttribute("answer",thequestion.getAnswer());
-			request.setAttribute("topic",thequestion.getTopic());
+			request.setAttribute("thequestion",thequestion);
 			request.getRequestDispatcher("/JSP/UpdateQuestion.jsp").forward(request, response);
 			System.out.println("updated");
 			}
@@ -57,7 +50,7 @@ public class UpdateQuestionServlet extends HttpServlet {
     		System.out.println("Update Successful");
     	}
 
-		response.sendRedirect(request.getContextPath() + "/QuestionManageServlet");
+		response.sendRedirect(request.getContextPath() + "/QuestionList");
 	}
 }
 

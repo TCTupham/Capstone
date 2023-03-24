@@ -34,7 +34,8 @@ public class CreateQuestionServlet extends HttpServlet {
 	    	String option4 = request.getParameter("option4");	
 	    	String answer =request.getParameter("answer") ;
 	    	String topic = request.getParameter("topic");
-	    	questions newquestion = new questions(question, option1, option2,option3,option4, answer,topic);
+	    	String level = request.getParameter("level");
+	    	questions newquestion = new questions(question, option1, option2,option3,option4, answer,topic,level);
 	    	AdminDao dao = new AdminDao();
 	    	int rows = dao.createQuestion(newquestion);   		
 	    	if (rows==0) {
@@ -42,7 +43,7 @@ public class CreateQuestionServlet extends HttpServlet {
 	    		
 	    	} else {
 	    		System.out.println("New question created!");
-	    		response.sendRedirect(request.getContextPath() + "/QuestionManageServlet");
+	    		response.sendRedirect(request.getContextPath() + "/QuestionList");
 	    		
 	    	}
 	    }

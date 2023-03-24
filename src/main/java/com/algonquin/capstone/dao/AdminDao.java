@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import com.algonquin.capstone.beans.questions;
+import com.algonquin.capstone.servlets.DBConnection;
 
 public class AdminDao {
 	   public int createQuestion(questions question) {
@@ -17,7 +18,7 @@ public class AdminDao {
 			try {
 				Connection connection = DBConnection.getConnectionToDatabase();
 				
-				String insertQuery = "insert into questions values(?,?,?,?,?,?,?,?,?)";
+				String insertQuery = "insert into questions values(?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement statement = connection.prepareStatement(insertQuery);
 				statement.setString(1,question.getId());
 				statement.setString(2,question.getQuestion());
@@ -28,6 +29,7 @@ public class AdminDao {
 				statement.setString(7,question.getAnswer());
 				statement.setString(8,question.getTopic());
 				statement.setString(9,question.getDate().toString());
+				statement.setString(10,question.getLevel());
 				
 				rowsAffected = statement.executeUpdate();
 				
@@ -99,7 +101,8 @@ public class AdminDao {
 				String answer = set.getString("answer");
 				String topic = set.getString("topic");		
 				Date date = set.getDate("datecreated");
-				questions newquestion = new questions(id,question,option1,option2,option3,option4,answer,topic,date);
+				String level = set.getString("level");	
+				questions newquestion = new questions(id,question,option1,option2,option3,option4,answer,topic,date,level);
 				list.add(newquestion);	
 	    	}
 			set.close();
@@ -107,9 +110,10 @@ public class AdminDao {
 			conn.close();}
 	    	catch (SQLException e){
 				e.printStackTrace();
-			}
-			return list;
+			}    
+	    	return list;    
 	    }
+	    
 	    
 	    public questions getRow(String id) throws SQLException {
 			Connection conn = DBConnection.getConnectionToDatabase();
@@ -130,7 +134,8 @@ public class AdminDao {
 				String getanswer = set.getString("answer"); 
 				String gettopic = set.getString("topic");
 				Date getdate = set.getDate("datecreated");
-				newquestion = new questions(newid,question,getoption1,getoption2,getoption3,getoption4,getanswer,gettopic,getdate);	
+				String getLevel = set.getString("level"); 
+				newquestion = new questions(newid,question,getoption1,getoption2,getoption3,getoption4,getanswer,gettopic,getdate,getLevel);	
 	    	}
 			
 			set.close();
