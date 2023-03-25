@@ -28,7 +28,6 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 	<div>
 	<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button>Create New Question</button></a> <br/> <br />
 	<a href="<%=request.getContextPath()%>/QuestionList"><button>Question List</button></a>
-	<a href="<%=request.getContextPath()%>/GetQuizServlet"><button>Create quiz</button></a>
 	
 	</div>
 </body>

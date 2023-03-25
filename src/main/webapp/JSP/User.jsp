@@ -23,6 +23,12 @@ if ((request.getSession(false).getAttribute("User") == null)) {
 	<div style="text-align: right">
 		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
 	</div>
+	<br />
+	<a href="<%=request.getContextPath()%>/GetQuizServlet"><button>Take quiz</button></a>
+	<br />
+	<button>Manage my account</button>
+	<br />
+	<button>My report</button>
 	
 </body>
 </html>
