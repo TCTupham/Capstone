@@ -1,4 +1,4 @@
-package com.algonquin.capstone.dao;
+package com.algonquin.capstone.servlets;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ public class DBConnection {
 
 	private static final String dbUrl = "jdbc:mysql://localhost:3306/ielts_db";
     private static final String dbUser = "root";
-    private static final String dbPassword = "root";
+    private static final String dbPassword = "MyNewPass";
 
     public static Connection getConnectionToDatabase() {
         Connection connection = null;

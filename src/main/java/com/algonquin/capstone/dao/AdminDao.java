@@ -9,7 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import com.algonquin.capstone.beans.QuestionBuilder;
 import com.algonquin.capstone.beans.questions;
+import com.algonquin.capstone.servlets.DBConnection;
 
 public class AdminDao {
 	   public int createQuestion(questions question) {
@@ -17,7 +19,7 @@ public class AdminDao {
 			try {
 				Connection connection = DBConnection.getConnectionToDatabase();
 				
-				String insertQuery = "insert into questions values(?,?,?,?,?,?,?,?,?)";
+				String insertQuery = "insert into questions values(?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement statement = connection.prepareStatement(insertQuery);
 				statement.setString(1,question.getId());
 				statement.setString(2,question.getQuestion());
@@ -28,6 +30,7 @@ public class AdminDao {
 				statement.setString(7,question.getAnswer());
 				statement.setString(8,question.getTopic());
 				statement.setString(9,question.getDate().toString());
+				statement.setString(10,question.getLevel());
 				
 				rowsAffected = statement.executeUpdate();
 				
@@ -99,7 +102,20 @@ public class AdminDao {
 				String answer = set.getString("answer");
 				String topic = set.getString("topic");		
 				Date date = set.getDate("datecreated");
-				questions newquestion = new questions(id,question,option1,option2,option3,option4,answer,topic,date);
+				String level = set.getString("level");	
+				questions newquestion = new QuestionBuilder()
+						  	.setId(id)
+		                    .setQuestion(question)
+		                    .setOption1(option1)
+		                    .setOption2(option2)
+		                    .setOption3(option3)
+		                    .setOption4(option4)
+		                    .setAnswer(answer)
+		                    .setDate(date)
+		                    .setLevel(level)
+		                    .setTopic(topic)
+		                    .build()  ;
+				
 				list.add(newquestion);	
 	    	}
 			set.close();
@@ -107,9 +123,10 @@ public class AdminDao {
 			conn.close();}
 	    	catch (SQLException e){
 				e.printStackTrace();
-			}
-			return list;
+			}    
+	    	return list;    
 	    }
+	    
 	    
 	    public questions getRow(String id) throws SQLException {
 			Connection conn = DBConnection.getConnectionToDatabase();
@@ -123,14 +140,26 @@ public class AdminDao {
 	    	while (set.next()) {
 				UUID newid = UUID.fromString(set.getString("id"));
 				String question= set.getString("question");
-				String getoption1 = set.getString("option1");
-				String getoption2 = set.getString("option2");
-				String getoption3 = set.getString("option3");
-				String getoption4 = set.getString("option4");
-				String getanswer = set.getString("answer"); 
-				String gettopic = set.getString("topic");
-				Date getdate = set.getDate("datecreated");
-				newquestion = new questions(newid,question,getoption1,getoption2,getoption3,getoption4,getanswer,gettopic,getdate);	
+				String option1 = set.getString("option1");
+				String option2 = set.getString("option2");
+				String option3 = set.getString("option3");
+				String option4 = set.getString("option4");
+				String answer = set.getString("answer"); 
+				String topic = set.getString("topic");
+				Date date = set.getDate("datecreated");
+				String level = set.getString("level"); 
+				newquestion = new QuestionBuilder()
+					  	.setId(newid)
+	                    .setQuestion(question)
+	                    .setOption1(option1)
+	                    .setOption2(option2)
+	                    .setOption3(option3)
+	                    .setOption4(option4)
+	                    .setAnswer(answer)
+	                    .setDate(date)
+	                    .setLevel(level)
+	                    .setTopic(topic)
+	                    .build()  ;	
 	    	}
 			
 			set.close();

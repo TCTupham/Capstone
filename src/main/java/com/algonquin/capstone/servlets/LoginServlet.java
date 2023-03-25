@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession(); // Creating a session
 				session.setAttribute("Admin", userName); // setting session attribute
 				request.setAttribute("userName", userName);
+				
 
 				request.getRequestDispatcher("/JSP/Admin.jsp").forward(request, response);
 
@@ -42,8 +43,8 @@ public class LoginServlet extends HttpServlet {
 				session.setMaxInactiveInterval(10 * 60);
 				session.setAttribute("User", userName);
 				request.setAttribute("userName", userName);
-
-				response.sendRedirect("UserServlet");
+		
+				request.getRequestDispatcher("/JSP/User.jsp").forward(request, response);
 			} else {
 				request.setAttribute("errMessage", userValidate);
 

@@ -65,13 +65,13 @@
 	
 	<servlet>
 		<description></description>
-		<display-name>QuestionManageServlet</display-name>
-		<servlet-name>QuestionManageServlet</servlet-name>
-		<servlet-class>com.algonquin.capstone.servlets.QuestionManageServlet</servlet-class>
+		<display-name>QuestionList</display-name>
+		<servlet-name>QuestionList</servlet-name>
+		<servlet-class>com.algonquin.capstone.servlets.QuestionList</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>QuestionManageServlet</servlet-name>
-		<url-pattern>/QuestionManageServlet</url-pattern>
+		<servlet-name>QuestionList</servlet-name>
+		<url-pattern>/QuestionList</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -83,6 +83,18 @@
 	<servlet-mapping>
 		<servlet-name>DeleteQuestionServlet</servlet-name>
 		<url-pattern>/DeleteQuestionServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+		<servlet>
+		<description></description>
+		<display-name>SubmitServlet</display-name>
+		<servlet-name>SubmitServlet</servlet-name>
+		<servlet-class>com.algonquin.capstone.servlets.SubmitServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubmitServlet</servlet-name>
+		<url-pattern>/SubmitServlet</url-pattern>
 	</servlet-mapping>
 	
 	
@@ -98,6 +110,17 @@
 		<url-pattern>/UpdateQuestionServlet</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<description></description>
+		<display-name>GetQuizServlet</display-name>
+		<servlet-name>GetQuizServlet</servlet-name>
+		<servlet-class>com.algonquin.capstone.servlets.GetQuizServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetQuizServlet</servlet-name>
+		<url-pattern>/GetQuizServlet</url-pattern>
+	</servlet-mapping>
 	
 	 <servlet>
        <servlet-name>ExamListServlet</servlet-name>
@@ -107,4 +130,7 @@
        <servlet-name>ExamListServlet</servlet-name>
        <url-pattern>/ExamList</url-pattern>
     </servlet-mapping>
+    
+    
+    
 </web-app>

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+h2  {
+	text-align:center;
+}
+.backhome {
+	text-align: center;
+}
+.list-grid {
+	border: solid lightblue;
+	display:grid;
+	width: 900px;
+	margin:auto;
+	background:lightblue;
+	grid-template-columns: 50% 30% auto;
+	border-radius: 5px;
+}
+
+.list-grid div {
+	background-color: white;
+	padding: 10px;
+	border: solid lightblue 1px;
+	border-radius: 5px;
+}
+
