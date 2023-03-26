@@ -2,21 +2,19 @@ package com.algonquin.capstone.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.algonquin.capstone.beans.Quiz;
+import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.beans.Records;
 import com.algonquin.capstone.beans.Result;
 import com.algonquin.capstone.beans.ResultBuilder;
-import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.dao.AdminDao;
-import com.algonquin.capstone.dao.QuizDao;
 import com.algonquin.capstone.dao.UserDao;
+import com.algonquin.capstone.services.ThreadSaveMultipleQuiz;
 import com.algonquin.capstone.utils.Constant;
 
 	public class SubmitServlet extends HttpServlet {
@@ -82,9 +80,11 @@ import com.algonquin.capstone.utils.Constant;
 			//save records (basic results)
 			int recordsId = userDao.createRecord(record);	
 			//save quiz
-			QuizDao quizDao = new QuizDao();
+			
 			for (Result result : resultList) {
-				quizDao.createQuiz(new Quiz(0, recordsId, result.getQuestionId(), result.getUserAnswer(), new Date()));
+				
+				ThreadSaveMultipleQuiz threadSaveQuiz = new ThreadSaveMultipleQuiz(result, recordsId);
+				threadSaveQuiz.start();
 			}
 			
 			//forward to JSP
