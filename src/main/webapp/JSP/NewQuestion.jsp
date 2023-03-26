@@ -44,10 +44,12 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 	</select>
 	<label>Level:</label>
 	<select name="level" id="level">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
+	<% for(int i=1;i<=3; i++) {%>
+		<option value="<%=i%>"><%=i%></option>
+	<% }%>
 	</select>
+	
+	
 	<br/> <br/>
 	<label for="topic">Topic:</label>
 	<input type="text" name="topic" id="topic" class="question" style="width: 300px;"/>

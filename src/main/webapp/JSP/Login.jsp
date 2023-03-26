@@ -33,7 +33,7 @@
 			<tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Login"></input><input
+				<td><input type="submit" value="Login"></input>&nbsp;&nbsp;<input
 					type="reset" value="Reset"></input></td>
 			</tr>
 		</table>

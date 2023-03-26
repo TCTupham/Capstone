@@ -9,12 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.beans.QuestionBuilder;
-import com.algonquin.capstone.beans.questions;
-import com.algonquin.capstone.servlets.DBConnection;
 
 public class AdminDao {
-	   public int createQuestion(questions question) {
+	   public int createQuestion(Question question) {
 	    	int rowsAffected =0;
 			try {
 				Connection connection = DBConnection.getConnectionToDatabase();
@@ -82,8 +81,8 @@ public class AdminDao {
 			return rowsAffected ;
 		}
 	    
-	    public ArrayList<questions> getQuestionList() {
-	    	ArrayList<questions> list = new ArrayList<>();
+	    public ArrayList<Question> getQuestionList() {
+	    	ArrayList<Question> list = new ArrayList<>();
 	    	try {
 			Connection conn = DBConnection.getConnectionToDatabase();
 	    	Statement stmt = conn.createStatement();
@@ -103,7 +102,7 @@ public class AdminDao {
 				String topic = set.getString("topic");		
 				Date date = set.getDate("datecreated");
 				String level = set.getString("level");	
-				questions newquestion = new QuestionBuilder()
+				Question newquestion = new QuestionBuilder()
 						  	.setId(id)
 		                    .setQuestion(question)
 		                    .setOption1(option1)
@@ -126,9 +125,9 @@ public class AdminDao {
 			}    
 	    	return list;    
 	    }
+	  
 	    
-	    
-	    public questions getRow(String id) throws SQLException {
+	    public Question getRow(String id) throws SQLException {
 			Connection conn = DBConnection.getConnectionToDatabase();
 	    	Statement stmt = conn.createStatement();
 	    	System.out.println(stmt.toString());
@@ -136,7 +135,7 @@ public class AdminDao {
 	    	ResultSet set = stmt.executeQuery(query);
 	    	
 	    	
-	    	questions newquestion =null;
+	    	Question newquestion =null;
 	    	while (set.next()) {
 				UUID newid = UUID.fromString(set.getString("id"));
 				String question= set.getString("question");

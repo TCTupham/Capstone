@@ -32,10 +32,10 @@
         <td><span style="color:red"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></span></td>
         </tr>
         
-
-        <td></td>
-        <td><input type="submit" value="Register"></input><input type="submit" value="Cancel"></input></td>
+        <tr>
+        <td><input type="submit" value="Register"/>&nbsp;&nbsp;<input type="submit" value="Cancel"/></td>
         </tr>
+        
         </table>
         </form>
 

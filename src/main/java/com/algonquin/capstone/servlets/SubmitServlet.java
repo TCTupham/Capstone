@@ -2,15 +2,22 @@ package com.algonquin.capstone.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.algonquin.capstone.beans.Quiz;
+import com.algonquin.capstone.beans.Records;
 import com.algonquin.capstone.beans.Result;
 import com.algonquin.capstone.beans.ResultBuilder;
-import com.algonquin.capstone.beans.questions;
+import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.dao.AdminDao;
+import com.algonquin.capstone.dao.QuizDao;
 import com.algonquin.capstone.dao.UserDao;
+import com.algonquin.capstone.utils.Constant;
 
 	public class SubmitServlet extends HttpServlet {
 
@@ -23,14 +30,16 @@ import com.algonquin.capstone.dao.UserDao;
 		            throws ServletException, IOException {
 			
 			ArrayList<Result> resultList = new ArrayList<>();	
-			ArrayList<questions> questionList = new ArrayList<>();
+			ArrayList<Question> questionList = new ArrayList<>();
 			ArrayList<Boolean> checked = new ArrayList<>();
-			AdminDao dao = new AdminDao();
-			UserDao dao2 = new UserDao();
+			AdminDao adminDao = new AdminDao();
+			UserDao userDao = new UserDao();
 			String username = request.getParameter("username");
+			int level = Integer.parseInt(request.getParameter("level"));
+			
 			double score = 0;
 			int count=0;
-			for (int i=0;i<30; i++) {
+			for (int i=0;i<Constant.NUMBER_QUESTION; i++) {
 				String id = "id"+String.valueOf(i);
 				String questionId = request.getParameter(id);
 				String userAnswer;
@@ -50,7 +59,7 @@ import com.algonquin.capstone.dao.UserDao;
 				resultList.add(result);
 				//	make question list	
 				try {
-					questions question = dao.getRow(questionId);
+					Question question = adminDao.getRow(questionId);
 					questionList.add(question);
 
 					if (result.getUserAnswer().equals(question.getAnswer())) {
@@ -67,16 +76,22 @@ import com.algonquin.capstone.dao.UserDao;
 				
 			}
 	
-			score = Math.round(1.0*count/30*100);
+			score = Math.round(1.0*count/Constant.NUMBER_QUESTION*100);
 
-			Records record = new Records(username,score);
-			dao2.createRecord(record);	
-			
+			Records record = new Records(username,score, level);
+			//save records (basic results)
+			int recordsId = userDao.createRecord(record);	
+			//save quiz
+			QuizDao quizDao = new QuizDao();
+			for (Result result : resultList) {
+				quizDao.createQuiz(new Quiz(0, recordsId, result.getQuestionId(), result.getUserAnswer(), new Date()));
+			}
 			
 			//forward to JSP
 			request.setAttribute("score", score);
 			request.setAttribute("checkedList", checked);
 			request.setAttribute("count", count);
+			request.setAttribute("numberQ", Constant.NUMBER_QUESTION);
 			request.setAttribute("resultList", resultList);
 			request.setAttribute("questionList", questionList);		
 			request.getRequestDispatcher("/JSP/ResultPage.jsp").forward(request, response);		    

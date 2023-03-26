@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.algonquin.capstone.beans.questions;
+import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.dao.AdminDao;
 
 	public class QuestionList extends HttpServlet {
-		ArrayList<questions> list;
+		ArrayList<Question> list;
 		/**
 		 * 
 		 */

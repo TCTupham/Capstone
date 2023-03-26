@@ -2,15 +2,13 @@ package com.algonquin.capstone.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.beans.QuestionBuilder;
-import com.algonquin.capstone.beans.questions;
 import com.algonquin.capstone.dao.AdminDao;
 
 
@@ -37,7 +35,7 @@ public class CreateQuestionServlet extends HttpServlet {
 	    	String answer =request.getParameter("answer") ;
 	    	String topic = request.getParameter("topic");
 	    	String level = request.getParameter("level");
-	    	questions newquestion = new QuestionBuilder()
+	    	Question newquestion = new QuestionBuilder()
 				  	.setId()
                     .setQuestion(question)
                     .setOption1(option1)

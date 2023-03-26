@@ -44,7 +44,9 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("User", userName);
 				request.setAttribute("userName", userName);
 		
-				request.getRequestDispatcher("/JSP/User.jsp").forward(request, response);
+//				request.getRequestDispatcher("/JSP/User.jsp").forward(request, response);
+				
+				response.sendRedirect("UserServlet");
 			} else {
 				request.setAttribute("errMessage", userValidate);
 

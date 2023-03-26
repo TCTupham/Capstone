@@ -62,7 +62,7 @@
 		<servlet-name>CreateQuestionServlet</servlet-name>
 		<url-pattern>/CreateQuestionServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>QuestionList</display-name>
@@ -73,7 +73,7 @@
 		<servlet-name>QuestionList</servlet-name>
 		<url-pattern>/QuestionList</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>DeleteQuestionServlet</display-name>
@@ -84,9 +84,9 @@
 		<servlet-name>DeleteQuestionServlet</servlet-name>
 		<url-pattern>/DeleteQuestionServlet</url-pattern>
 	</servlet-mapping>
-	
-	
-		<servlet>
+
+
+	<servlet>
 		<description></description>
 		<display-name>SubmitServlet</display-name>
 		<servlet-name>SubmitServlet</servlet-name>
@@ -96,41 +96,42 @@
 		<servlet-name>SubmitServlet</servlet-name>
 		<url-pattern>/SubmitServlet</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<description></description>
 		<display-name>UpdateQuestionServlet</display-name>
 		<servlet-name>UpdateQuestionServlet</servlet-name>
 		<servlet-class>com.algonquin.capstone.servlets.UpdateQuestionServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>UpdateQuestionServlet</servlet-name>
 		<url-pattern>/UpdateQuestionServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>GetQuizServlet</display-name>
 		<servlet-name>GetQuizServlet</servlet-name>
 		<servlet-class>com.algonquin.capstone.servlets.GetQuizServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>GetQuizServlet</servlet-name>
 		<url-pattern>/GetQuizServlet</url-pattern>
 	</servlet-mapping>
-	
-	 <servlet>
-       <servlet-name>ExamListServlet</servlet-name>
-       <servlet-class>com.example.ExamListServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-       <servlet-name>ExamListServlet</servlet-name>
-       <url-pattern>/ExamList</url-pattern>
-    </servlet-mapping>
-    
-    
-    
+
+	<servlet>
+		<servlet-name>QuizRecordsServlet</servlet-name>
+		<servlet-class>com.algonquin.capstone.servlets.QuizRecordsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QuizRecordsServlet</servlet-name>
+		<url-pattern>/QuizRecordsServlet</url-pattern>
+	</servlet-mapping>
+
+
+
+
 </web-app>

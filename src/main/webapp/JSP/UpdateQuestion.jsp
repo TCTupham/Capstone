@@ -13,8 +13,8 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 <%
 }
 %>
-<%@ page import="com.algonquin.capstone.beans.questions" %>
-<% questions question = (questions)request.getAttribute("thequestion"); %>
+<%@ page import="com.algonquin.capstone.beans.Question" %>
+<% Question question = (Question)request.getAttribute("thequestion"); %>
 <body>
 	<center>
 		<h2>Update Question</h2>

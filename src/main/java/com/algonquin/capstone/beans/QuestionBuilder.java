@@ -76,8 +76,8 @@ public class QuestionBuilder {
 	        return this;
 	    }
 
-	    public questions build() {
-	        return new questions(id,question,option1,option2,option3,option4,answer,topic,date,level);
+	    public Question build() {
+	        return new Question(id,question,option1,option2,option3,option4,answer,topic,date,level);
 	    }
 
 	}

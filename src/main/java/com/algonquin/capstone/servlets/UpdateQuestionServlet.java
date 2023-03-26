@@ -2,11 +2,13 @@ package com.algonquin.capstone.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.algonquin.capstone.beans.questions;
+
+import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.dao.AdminDao;
 
 public class UpdateQuestionServlet extends HttpServlet {
@@ -23,7 +25,7 @@ public class UpdateQuestionServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		AdminDao dao = new AdminDao();
 		try {
-			questions thequestion = dao.getRow(id);
+			Question thequestion = dao.getRow(id);
 			request.setAttribute("thequestion",thequestion);
 			request.getRequestDispatcher("/JSP/UpdateQuestion.jsp").forward(request, response);
 			System.out.println("updated");

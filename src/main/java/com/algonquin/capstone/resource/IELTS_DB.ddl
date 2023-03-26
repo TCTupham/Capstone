@@ -56,7 +56,16 @@ VALUES
 "12345678",
 "User");
 
-drop table questions;
+CREATE TABLE `quiz` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `recordsId` int DEFAULT NULL,
+  `questionId` char(40) DEFAULT NULL,
+  `yourAnswer` varchar(45) DEFAULT NULL,
+  `datecreated` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+);
+
 CREATE TABLE `questions` (
   `id` char(40) NOT NULL,
   `question` text,
@@ -68,6 +77,15 @@ CREATE TABLE `questions` (
   `topic` text,
   `datecreated` date DEFAULT NULL,
   `level` text not null,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `records` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` text,
+  `score` decimal(3,0) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `level` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
