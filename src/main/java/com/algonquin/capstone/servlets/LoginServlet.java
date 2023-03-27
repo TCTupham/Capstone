@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 			} else if (userValidate.equals(Constant.USER_ROLE)) {
 
 				HttpSession session = request.getSession();
-				session.setMaxInactiveInterval(10 * 60);
+				session.setMaxInactiveInterval(60 * 60);
 				session.setAttribute("User", userName);
 				request.setAttribute("userName", userName);
 		
