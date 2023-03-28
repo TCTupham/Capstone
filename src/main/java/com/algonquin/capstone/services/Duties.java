@@ -3,7 +3,7 @@ package com.algonquin.capstone.services;
 import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.dao.AdminDao;
 
-public class Duties implements DutiesInterface {
+public class Duties   {
 	public void paySubscription() {}
 	
 	

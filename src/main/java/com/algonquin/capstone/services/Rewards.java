@@ -12,7 +12,7 @@ import com.algonquin.capstone.dao.RecordsDao;
 import com.algonquin.capstone.dao.UserDao;
 import com.algonquin.capstone.utils.Constant;
 
-public class Rewards implements RewardsInterface{
+public class Rewards  {
 	public void getPaid() {
 		
 	}
