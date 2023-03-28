@@ -9,7 +9,7 @@ public class DBConnection {
 
 	private static final String dbUrl = "jdbc:mysql://localhost:3306/ielts_db";
     private static final String dbUser = "root";
-    private static final String dbPassword = "root";
+    private static final String dbPassword = "MyNewPass";
 
     public static Connection getConnectionToDatabase() {
         Connection connection = null;

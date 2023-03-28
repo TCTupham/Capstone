@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.algonquin.capstone.beans.Admin;
 import com.algonquin.capstone.beans.Question;
 import com.algonquin.capstone.beans.QuestionBuilder;
 import com.algonquin.capstone.dao.AdminDao;
@@ -47,16 +48,9 @@ public class CreateQuestionServlet extends HttpServlet {
                     .setLevel(level)
                     .setTopic(topic)
                     .build()  ;	
-	    	AdminDao dao = new AdminDao();
-	    	int rows = dao.createQuestion(newquestion);   		
-	    	if (rows==0) {
-	    		System.out.println("Create error");
-	    		
-	    	} else {
-	    		System.out.println("New question created!");
-	    		response.sendRedirect(request.getContextPath() + "/QuestionList");
-	    		
-	    	}
+	    	Admin admin = new Admin("admin");
+	    	admin.createQuestion(newquestion);
+	    	response.sendRedirect(request.getContextPath() + "/QuestionList");
 	    }
 
 }

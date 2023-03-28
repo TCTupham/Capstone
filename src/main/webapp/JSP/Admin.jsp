@@ -22,12 +22,13 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 	<%=session.getAttribute("Admin")%>
 
 	<div style="text-align: right">
-		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+		<a href="<%=request.getContextPath()%>/LogoutServlet"><button>Logout</button></a>
 	</div>
 	
 	<div>
 	<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button>Create New Question</button></a> <br/> <br />
 	<a href="<%=request.getContextPath()%>/QuestionList"><button>Question List</button></a>
+	<a href="<%=request.getContextPath()%>/JSP/MyInfo.jsp"><button>My info</button></a>
 	
 	</div>
 </body>

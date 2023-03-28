@@ -48,7 +48,7 @@ if (distance < 0) {
 		<h2>Level: <%=level%></h2>
 	</div>
 		
-	<p class="backhome" ><a href="<%=request.getContextPath()%>/UserServlet">Back to home page</a></p>
+	<a href="/Capstone/JSP/User.jsp"><button>Back to home page</button></a>
 <!-- Body -->
 	
 	<label style="font-size: 2em;">Timer: </label> <label style="font-size: 2em;" id="timer"></label>

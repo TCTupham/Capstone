@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.algonquin.capstone.beans.Question;
+import com.algonquin.capstone.beans.User;
 import com.algonquin.capstone.utils.Constant;
 
 public class GetQuizServlet extends HttpServlet {
@@ -24,8 +25,9 @@ public class GetQuizServlet extends HttpServlet {
 		request.setAttribute("level", level);
 		request.setAttribute("numberQ", Constant.NUMBER_QUESTION);
 		request.setAttribute("clock", Constant.NUMBER_QUESTION *60);
-		QuizGenerator qg = new QuizGenerator(level);
-		ArrayList<Question> quiz = qg.getQuiz();
+		User user = new User("user");
+		ArrayList<Question> quiz = user.createQuiz(level);	
+		
 		request.setAttribute("quiz", quiz);
 		request.getRequestDispatcher("/JSP/Quiz.jsp").forward(request, response);
 		System.out.println("Quiz created");

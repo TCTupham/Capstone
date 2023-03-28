@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.algonquin.capstone.beans.Admin;
 import com.algonquin.capstone.dao.AdminDao;
 
 public class DeleteQuestionServlet extends HttpServlet {
@@ -16,15 +17,11 @@ public class DeleteQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		AdminDao dao = new AdminDao();
+			throws ServletException, IOException {	
 		String id = request.getParameter("id");
-		int rows = dao.deleteQuestion(id);
-		if (rows == 0) {
-			System.out.println("Delete Failed");
-		} else {
-			System.out.println("Delete Successful");
-		}
+		Admin admin = new Admin("admin");
+		admin.deleteQuestion(id);
+		
 		response.sendRedirect(request.getContextPath() + "/QuestionList");
 	}
 }

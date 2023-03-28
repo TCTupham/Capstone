@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession(); // Creating a session
 				session.setAttribute("Admin", userName); // setting session attribute
 				request.setAttribute("userName", userName);
+				session.setAttribute("member", userName);
+				session.setAttribute("User", null);
 				
 
 				request.getRequestDispatcher("/JSP/Admin.jsp").forward(request, response);
@@ -43,8 +45,10 @@ public class LoginServlet extends HttpServlet {
 				session.setMaxInactiveInterval(60 * 60);
 				session.setAttribute("User", userName);
 				request.setAttribute("userName", userName);
+				session.setAttribute("member", userName);
+				session.setAttribute("Admin", null);
 		
-//				request.getRequestDispatcher("/JSP/User.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSP/User.jsp").forward(request, response);
 				
 				response.sendRedirect("UserServlet");
 			} else {

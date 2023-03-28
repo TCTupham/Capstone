@@ -20,10 +20,13 @@ if ((request.getSession(false).getAttribute("User") == null)) {
 		<h2>User's Home</h2>
 	</center>
 	Welcome
-	<%=request.getSession().getAttribute("User")%>
+	<%=session.getAttribute("User")%>
 
 	<div style="text-align: right">
-		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+		<a href="<%=request.getContextPath()%>/JSP/MyInfo.jsp"><button>My info</button></a>
+		<a href="<%=request.getContextPath()%>/UserServlet"><button>My record</button></a>
+		<a href="<%=request.getContextPath()%>/LogoutServlet"><button>Logout</button></a>
+		
 	</div>
 	<br />
 	
@@ -46,41 +49,6 @@ if ((request.getSession(false).getAttribute("User") == null)) {
 			<br /> <br />
 		</fieldset>
 	</form>
-
-	<h1>Your's results</h1>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-
-				<th>Level</th>
-				<th>Score</th>
-				<th>Date</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			List<Records> list = (List<Records>) request.getAttribute("records");
-			%>
-			<%
-			for (int i = 0; i < list.size(); i++) {
-			%>
-
-			<tr>
-				<td><%=list.get(i).getLevel()%></td>
-				<td><%=list.get(i).getScore()%></td>
-				<td><%=list.get(i).getDate()%></td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp; <a
-					href="<%=request.getContextPath()%>/QuizRecordsServlet?recordsId=<%=list.get(i).getId()%>">View
-						details</a>
-				</td>
-			</tr>
-			<%
-			}
-			%>
-			<!-- } -->
-		</tbody>
-	</table>
-
 
 </body>
 </html>

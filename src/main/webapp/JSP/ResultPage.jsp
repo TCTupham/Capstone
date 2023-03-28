@@ -33,7 +33,7 @@ if ((request.getSession(false).getAttribute("User") == null)) {
 	
 <!-- Body -->
 	<h2>Result</h2>
-	<p class="backhome" ><a href="<%=request.getContextPath()%>/UserServlet">Back to home page</a></p>
+	<a href="/Capstone/JSP/User.jsp"><button>Back to home page</button></a>
 	<div class="list-grid">
 	<p>Your score: <%=score %>% </p>
 	<p>Correct: <%=count %>/<%=numberQ%></p>

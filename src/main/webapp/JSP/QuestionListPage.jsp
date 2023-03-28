@@ -23,17 +23,16 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 <body>
 <div class="question-list-page">
 <!-- Header -->
-<div style="text-align: right">
-		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+	<div style="text-align: right">
+		<a href="/Capstone/JSP/Admin.jsp"><button>Back to home page</button></a>
+		<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button>Create New Question</button></a>
+		<a href="<%=request.getContextPath()%>/LogoutServlet"><button>Logout</button></a>
 	</div>
 	
 <!-- Body -->
 
 	<h2>Question List</h2>
-	<p class="backhome" ><a href="/Capstone/JSP/Admin.jsp">Back to home page</a></p>
-	<br />
-	<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button>Create New Question</button></a>
-	<br />
+	
 	<div class="list-grid">
 	<% for(int i=0;i<list.size(); i++) {%>
 			<div>
