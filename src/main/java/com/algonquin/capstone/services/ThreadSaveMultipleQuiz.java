@@ -24,7 +24,6 @@ public class ThreadSaveMultipleQuiz implements Runnable {
 	}
 
 	public void start() {
-		System.out.println("Starting saving questions " + result.getQuestionId());
 		if (t == null) {
 			t = new Thread(this, result.getQuestionId());
 			t.start();

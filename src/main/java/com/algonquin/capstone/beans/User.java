@@ -3,14 +3,15 @@ package com.algonquin.capstone.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.algonquin.capstone.services.BenefitAbstract;
 import com.algonquin.capstone.services.Duties;
-import com.algonquin.capstone.services.Rewards;
+import com.algonquin.capstone.services.Benefits;
 
 public class User extends Member implements UserInterface  {
 	private String username;
 	
 	Duties duty = new Duties();
-	Rewards reward = new Rewards();
+	BenefitAbstract reward = new Benefits();
 	
 	public User(String username) {
 		super(username);

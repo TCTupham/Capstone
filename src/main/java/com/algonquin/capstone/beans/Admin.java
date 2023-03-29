@@ -1,10 +1,11 @@
 package com.algonquin.capstone.beans;
 
+import com.algonquin.capstone.services.BenefitAbstract;
 import com.algonquin.capstone.services.Duties;
-import com.algonquin.capstone.services.Rewards;
+import com.algonquin.capstone.services.Benefits;
 
 public class Admin  extends Member implements AdminInterface{
-	Rewards reward = new Rewards();
+	BenefitAbstract reward = new Benefits();
 	Duties duty = new Duties();
 	
 	public Admin(String username) {
