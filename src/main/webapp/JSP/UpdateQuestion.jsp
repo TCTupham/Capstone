@@ -4,6 +4,10 @@
 <html>
 <head>
 <title>Update Question Page</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/CSS/UpdateQuestion.css" ></link>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monofett&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@200;400;700&display=swap" rel="stylesheet">
 </head>
 <%
 //In case, if Admin session is not set, redirect to Login page
@@ -16,23 +20,26 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 <%@ page import="com.algonquin.capstone.beans.Question" %>
 <% Question question = (Question)request.getAttribute("thequestion"); %>
 <body>
-	<center>
-		<h2>Update Question</h2>
-	</center>
-
+<div class="page">
+<!-- Header -->
 	<div style="text-align: right">
-		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
+		<a href="/Capstone/JSP/Admin.jsp" id="top"><button class="logout button">Back to home page</button></a>
+		<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button class="logout button">Create New Question</button></a>
+		<a href="<%=request.getContextPath()%>/QuestionList"><button class="logout button">Question List</button></a>
+		<a href="<%=request.getContextPath()%>/LogoutServlet"><button class="logout button">Log out</button></a>
 	</div>
-	
+		<h2>Update Question</h2>
+
+
+	<!-- Body -->
 	<div>
-	<h3> Update question: </h3>
 	<form action="<%=request.getContextPath()%>/UpdateQuestionServlet" method="post">
-	<p>Topic: <%=question.getTopic()%>"</p>
-	<p>Date Created: <%=question.getDate()%>"</p>
-	<p>Level: <%=question.getLevel()%>"</p>
+	<p>Topic: <%=question.getTopic()%></p>
+	<p>Date Created: <%=question.getDate()%></p>
+	<p>Level: <%=question.getLevel()%></p>
 	
-	<label for="question">Question: </label>
-	<input type="text" name="question" id="question" class="question" style="width: 600px;" value="<%=question.getQuestion()%>"></input> <br/> <br/>
+	<label for="question">Question: </label> <br/>
+	<textarea name="question" id="question" class="question" cols="60" rows="4" required><%=question.getQuestion()%></textarea> <br/> <br/>
 	<label for="option1">Option 1:</label>
 	<input type="text" name="option1" id="option1" class="question" style="width: 300px;" value="<%=question.getOption1()%>"/><br/> <br/>
 	<label for="option2">Option 2:</label>
@@ -53,6 +60,7 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 	<input type="submit" value="Update"/>	
 	</form>
 	<a href="<%=request.getContextPath()%>/QuestionList"><button>Cancel</button></a>
+	</div>	
 	</div>
 </body>
 </html>

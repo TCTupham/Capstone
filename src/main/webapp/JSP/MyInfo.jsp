@@ -5,6 +5,11 @@
 <html>
 <head>
 <title>My Info Page</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/CSS/MyInfo.css" ></link>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monofett&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@200;400;700&display=swap" rel="stylesheet">
+
 </head>
 <%
 //In case, if Admin session is not set, redirect to Login page
@@ -17,25 +22,30 @@ if ((request.getSession(false).getAttribute("member") == null)) {
 <% String memberName = (String)session.getAttribute("member");
 	Member member = new Member(memberName);%>
 <body>
-	<center>
+	<div class="page">
+		<div style="text-align: right">
+			<% if (session.getAttribute("User") != null){ %>
+			<a href="/Capstone/JSP/User.jsp"><button class="logout button">Back to home page</button></a>
+			<a href="/Capstone/GetRecordServlet"><button class="logout button">My record</button></a>
+			<a href="<%=request.getContextPath()%>/LogoutServlet"><button class="logout button">Log out</button></a>
+			<%} else if (session.getAttribute("Admin") != null){%>
+				<a href="/Capstone/JSP/Admin.jsp" id="top"><button class="logout button">Back to home page</button></a>
+				<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button class="logout button">Create New Question</button></a>
+				<a href="<%=request.getContextPath()%>/QuestionList"><button class="logout button">Question List</button></a>
+				<a href="<%=request.getContextPath()%>/LogoutServlet"><button class="logout button">Log out</button></a>
+			<%} else { %> 
+			<a href="/Capstone/JSP/Login.jsp"><button>Back to home page</button></a>
+			<% } %>	
+		</div>
 		<h2>My Info</h2>
-	</center>
-
-	<div style="text-align: right">
-		<a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a>
-	</div>
-	<div>
-	<p>User name: <%=member.getUsername() %> </p>
-	<p>Full name: <%=member.getFullname() %> </p>
-	<p>Email: <%=member.getEmail() %> </p>
-	<% if (session.getAttribute("User") != null){ %>
-	<a href="/Capstone/JSP/User.jsp"><button>Back to home page</button></a>
-	<%} else if (session.getAttribute("Admin") != null){%>
-	<a href="/Capstone/JSP/Admin.jsp"><button>Back to home page</button></a>
-	<%} else { %> 
-	<a href="/Capstone/JSP/Login.jsp"><button>Back to home page</button></a>
-	<% } %>
-	
+		<div class="content-box myinfo-grid">
+				<div><p>User name:</p></div>
+				<div><p><%=member.getUsername() %></p></div>
+				<div><p>Full name:</p></div>
+				<div><p> <%=member.getFullname() %> </p></div>
+				<div><p>Email:</p></div>
+				<div><p><%=member.getEmail() %></p></div>
+		</div>
 	</div>
 </body>
 </html>

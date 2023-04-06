@@ -6,6 +6,11 @@
 <html>
 <head>
 <title>My Record</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/CSS/MyRecord.css" ></link>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monofett&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@200;400;700&display=swap" rel="stylesheet">
+
 </head>
 <%
 //In case, if User session is not set, redirect to Login page.
@@ -16,52 +21,35 @@ if ((request.getSession(false).getAttribute("User") == null)) {
 }
 %>
 <body>
-	<center>
-		<h2>My Record</h2>
-	</center>
-
-
+<div class="page">
 	<div style="text-align: right">
-		
-		<a href="<%=request.getContextPath()%>/JSP/MyInfo.jsp"><button>My info</button></a>
-		<a href="/Capstone/JSP/User.jsp"><button>Back to home page</button></a>
-		<a href="<%=request.getContextPath()%>/LogoutServlet"><button>Logout</button></a>
-	<br />
+		<a href="<%=request.getContextPath()%>/JSP/MyInfo.jsp"><button class="button logout">My info</button></a>
+		<a href="/Capstone/JSP/User.jsp"><button class="button logout">Back to home page</button></a>
+		<a href="<%=request.getContextPath()%>/LogoutServlet"><button class="button logout">Logout</button></a>
 	</div>
-
-	<h1>My results</h1>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-
-				<th>Level</th>
-				<th>Score</th>
-				<th>Date</th>
-			</tr>
-		</thead>
-		<tbody>
+		<h2>My Record</h2>
+	<div class="content-box">
+		<div class="record-grid">
+			<div>Level</div>
+			<div>Score</div>
+			<div>Date</div>
+			<div></div>
 			<%
 			List<Records> list = (List<Records>) request.getAttribute("records");
 			%>
 			<%
 			for (int i = 0; i < list.size(); i++) {
 			%>
-
-			<tr>
-				<td><%=list.get(i).getLevel()%></td>
-				<td><%=list.get(i).getScore()%></td>
-				<td><%=list.get(i).getDate()%></td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp; <a
-					href="<%=request.getContextPath()%>/QuizRecordsServlet?recordsId=<%=list.get(i).getId()%>">View
-						details</a>
-				</td>
-			</tr>
+				<div><%=list.get(i).getLevel()%></div>
+				<div><%=list.get(i).getScore()%></div>
+				<div><%=list.get(i).getDate()%></div>
+				<div><a href="<%=request.getContextPath()%>/QuizRecordsServlet?recordsId=<%=list.get(i).getId()%>">View details</a></div>
 			<%
 			}
 			%>
-			<!-- } -->
-		</tbody>
-	</table>
+	</div>
+	</div>
+	</div>
 
 
 </body>

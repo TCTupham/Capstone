@@ -4,6 +4,11 @@
 <html>
 <head>
 <title>Admin Page</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/CSS/Admin.css" ></link>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monofett&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:wght@200;400;700&display=swap" rel="stylesheet">
+
 </head>
 <%
 //In case, if Admin session is not set, redirect to Login page
@@ -14,22 +19,20 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 }
 %>
 <body>
-	<center>
-		<h2>Admin Home Page</h2>
-	</center>
-
-	Welcome
-	<%=session.getAttribute("Admin")%>
-
+<div class="page">
 	<div style="text-align: right">
-		<a href="<%=request.getContextPath()%>/LogoutServlet"><button>Logout</button></a>
-	</div>
+		<a href="<%=request.getContextPath()%>/LogoutServlet"><button class="button logout">Log out</button></a>
+	</div>	
+	<h2>Admin Home Page</h2>
+	<p> Welcome <%=session.getAttribute("Admin")%></p>
 	
-	<div>
+	<div class="content-box">
 	<a href="<%=request.getContextPath()%>/JSP/NewQuestion.jsp"><button>Create New Question</button></a> <br/> <br />
-	<a href="<%=request.getContextPath()%>/QuestionList"><button>Question List</button></a>
-	<a href="<%=request.getContextPath()%>/JSP/MyInfo.jsp"><button>My info</button></a>
+	<a href="<%=request.getContextPath()%>/QuestionList"><button>Question List</button></a> <br/><br />
+	<a href="<%=request.getContextPath()%>/JSP/MyInfo.jsp"><button>My Account</button></a>
 	
 	</div>
+	
+</div>
 </body>
 </html>
