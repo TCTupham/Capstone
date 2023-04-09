@@ -57,9 +57,10 @@ if ((request.getSession(false).getAttribute("Admin") == null)) {
 	</select>
 	<br/> <br/>
 	<input type="hidden" name="id" id="id" class="question" value="<%=question.getId()%>"/>
-	<input type="submit" value="Update"/>	
+			<input class="button" type="submit" value="Update"/>
+	<a class="button" href="<%=request.getContextPath()%>/QuestionList">Cancel</a>
 	</form>
-	<a href="<%=request.getContextPath()%>/QuestionList"><button>Cancel</button></a>
+
 	</div>	
 	</div>
 </body>
